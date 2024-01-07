@@ -1,10 +1,9 @@
-import {CityType} from './04.types'
-import {demolishHousesOnTheStreet, getBuildingsWithStaffCountGreaterThen, getHousesOnTheStreet} from './04v2'
+import {CityType} from '../city'
+import {D} from './05v2'
 
 let city: CityType
 
 beforeEach(() => {
-
     city = {
         title: 'New York',
         houses: [
@@ -58,32 +57,35 @@ beforeEach(() => {
         ],
         citizensNumber: 1000000
     }
+})
+
+test.skip('Streets titles list of government buildings', () => {
+
+    let streetNames = D.getStreetsTitlesOfGovernmentBuildings(city.governmentBuildings)
+
+    expect(streetNames.length).toBe(2)
+    expect(streetNames[0]).toBe('Central Str')
+    expect(streetNames[1]).toBe('South Str')
 
 })
 
-test.skip('Houses should be destroyed', () => {
+test.skip('Streets titles list', () => {
 
-    demolishHousesOnTheStreet(city, 'Happy street')
+    let streets = D.getStreetsTitlesOfHouses(city.houses)
 
-    expect(city.houses.length).toBe(1)
-    expect(city.houses[0].id).toBe(1)
+    expect(streets.length).toBe(3)
+    expect(streets[0]).toBe('White street')
+    expect(streets[1]).toBe('Happy street')
+    expect(streets[2]).toBe('Happy street')
 
 })
 
-test.skip('List of houses street titles', () => {
+test('Create greeting messages for streets', () => {
 
-    let happyHouses = getHousesOnTheStreet(city.houses, 'Happy street')
-    let whiteHouses = getHousesOnTheStreet(city.houses, 'White street')
+    let messages = D.createMessages(city.houses)
 
-    expect(happyHouses.length).toBe(2)
-    expect(whiteHouses.length).toBe(1)
-})
-
-test.skip('Buildings with correct staff count', () => {
-
-    let buildings = getBuildingsWithStaffCountGreaterThen(city.governmentBuildings, 500)
-
-    expect(buildings.length).toBe(1)
-    expect(buildings[0].type).toBe('FIRE-STATION')
-
+    expect(messages.length).toBe(3)
+    expect(messages[0]).toBe('Hello guys from White street')
+    expect(messages[1]).toBe('Hello guys from Happy street')
+    expect(messages[2]).toBe('Hello guys from Happy street')
 })

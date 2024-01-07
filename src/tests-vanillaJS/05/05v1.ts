@@ -1,4 +1,4 @@
-type ManType = {
+export type ManType = {
     name: string
     age: number
 }
@@ -9,7 +9,7 @@ export type devsType = {
     lastName: string
 }
 
-// =================================================================================================================================================
+// ========================================================================================
 
 const people: ManType[] = [
     {name: 'Andrew Ivanov', age: 33},
@@ -49,10 +49,15 @@ const dev2: Array<devsType> = [
     dimychTransformator(people[2])
 ]
 
-export const dev3: Array<devsType> = people.map(item => {
+const dev3: Array<devsType> = people.map(item => {
     return {
         stack: ['css, html', 'js', 'tdd', 'react'],
         firstName: item.name.split(' ')[0],
         lastName: item.name.split(' ')[1]
     }
 })
+
+
+export const D = {
+    dev3
+}
