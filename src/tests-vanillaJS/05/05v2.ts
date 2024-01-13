@@ -9,7 +9,14 @@ function getStreetsTitlesOfHouses(houses: HousesType[]): Array<string> {
 }
 
 function createMessages(houses: HousesType[]): Array<string> {
-    return houses.map(item => `Hello guys from ${item.address.street.title}`)
+
+    function callBackFnk(item: HousesType) {
+        return `Hello guys from ${item.address.street.title}`
+    }
+
+    // функция callBackFnk не вызывается
+    // мы отдали ее внутрь map, и там уже она будет вызвана
+    return houses.map(callBackFnk)
 }
 
 export const D = {

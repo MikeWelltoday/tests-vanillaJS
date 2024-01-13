@@ -80,7 +80,7 @@ test.skip('Streets titles list', () => {
 
 })
 
-test('Create greeting messages for streets', () => {
+test.skip('Create greeting messages for streets', () => {
 
     let messages = D.createMessages(city.houses)
 

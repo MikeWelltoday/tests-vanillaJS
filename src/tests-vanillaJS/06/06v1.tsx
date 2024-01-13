@@ -1,23 +1,21 @@
-import React, {useState} from 'react'
-import './App.css'
-import {User} from './tests-vanillaJS/06/06v1'
+import React, {FC} from 'react'
 
 //===============================================================================================================================================================
 
-
 //===============================================================================================================================================================
 
-function App() {
+export const User: FC = () => {
+
+    function deleteUser(event: React.MouseEvent<HTMLButtonElement>) {
+        console.log(event.currentTarget)
+    }
 
     return (
-        <div className={'App'}>
-            <User/>
+        <div>
+            <span>Dimich</span>
+            <button name={'del'} onClick={deleteUser}>del</button>
+            <button name={'add'} onClick={deleteUser}>add</button>
         </div>
     )
 }
-
-export default App
-
-
-
 
